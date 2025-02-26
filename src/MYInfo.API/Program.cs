@@ -1,4 +1,4 @@
-using MYInfo.Infrastructure;
+using MYInfo.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +9,7 @@ builder.Services.AddAuthorization();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
-// Custom dependencies
-builder.Services.AddInfrastructure();
+builder.Services.AddApi(builder.Configuration);
 
 var app = builder.Build();
 
@@ -22,6 +20,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCustomConfig();
 
 app.UseHttpsRedirection();
 

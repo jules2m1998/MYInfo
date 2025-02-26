@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MYInfo.Domain.Repositories;
@@ -12,13 +13,16 @@ namespace MYInfo.Infrastructure;
 
 public static class InfrastructureDependencyInjection
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection @this)
+    public static IServiceCollection AddInfrastructure(this IServiceCollection @this, IConfiguration configuration)
     {
-        var connectionString = "myinfo-data";
+        var connectionString = configuration.GetConnectionString("myinfo-data");
 
         @this.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-        @this.AddScoped<IDbContext, MYInfoDbContext>();
         @this.AddScoped(typeof(IBaseRepository<,>), typeof(BaseRepository<,>));
+        @this.AddScoped<IUserMetadataRepository, UserMetadataRepository>();
+
+
+        @this.AddScoped<IDbContext, MYInfoDbContext>();
 
         @this.AddDbContext<MYInfoDbContext>((sp, options) =>
         {
