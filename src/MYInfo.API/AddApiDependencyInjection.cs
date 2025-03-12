@@ -1,18 +1,14 @@
-﻿using MYInfo.API.Services;
-using MYInfo.Application;
-using MYInfo.Domain.Services;
-using MYInfo.Infrastructure;
-using MYInfo.Infrastructure.Persistence.Data;
-
-namespace MYInfo.API;
+﻿namespace MYInfo.API;
 
 public static class AddApiDependencyInjection
 {
     public static IServiceCollection AddApi(this IServiceCollection @this, IConfiguration configuration)
     {
+
         @this.AddScoped<IUserContextService, UserContextService>();
         @this.AddInfrastructure(configuration)
             .AddApplication();
+        @this.AddExceptionHandler<CustomExceptionHandler>();
         return @this;
     }
 
@@ -27,12 +23,9 @@ public static class AddApiDependencyInjection
     {
         if (@this.Environment.IsDevelopment())
         {
-            @this.UseReDoc(cfg =>
-            {
-                cfg.DocumentTitle = "MYInfo API Documentation";
-                cfg.SpecUrl = "/openapi/v1.json";
-            });
+            @this.MapScalarApiReference(); // scalar/v1
         }
+        @this.UseExceptionHandler(opt => { });
         return @this;
     }
 }

@@ -1,7 +1,4 @@
-﻿using ErrorOr;
-using MediatR;
-
-namespace MYInfo.Application.CQRS;
+﻿namespace MYInfo.Application.CQRS;
 
 public interface IQueryHandler<in TQuery> :
     IQueryHandler<TQuery, Unit>

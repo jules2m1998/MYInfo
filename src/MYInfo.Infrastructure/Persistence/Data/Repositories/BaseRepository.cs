@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MYInfo.Domain.Abstractions;
-using MYInfo.Domain.Repositories;
-
-namespace MYInfo.Infrastructure.Persistence.Data.Repositories;
+﻿namespace MYInfo.Infrastructure.Persistence.Data.Repositories;
 
 
 public class BaseRepository<TEntity, TId>(IDbContext context) : IBaseRepository<TEntity, TId>

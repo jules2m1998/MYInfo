@@ -1,11 +1,10 @@
-﻿using MYInfo.Domain.Services;
+﻿namespace MYInfo.API.Services;
 
-namespace MYInfo.API.Services;
-
-public class UserContextService : IUserContextService
+public class UserContextService(IHttpContextAccessor httpContextAccessor) : IUserContextService
 {
-    public string GetUserIdentifier()
-    {
-        return Guid.CreateVersion7().ToString();
-    }
+    public string GetUserIdentifier() => httpContextAccessor
+        .HttpContext?
+        .User
+        .FindFirst(ClaimTypes.NameIdentifier)?
+        .Value ?? string.Empty;
 }

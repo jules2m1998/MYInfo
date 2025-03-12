@@ -1,15 +1,10 @@
-﻿using FluentValidation;
-using MYInfo.Application.CQRS;
-
-namespace MYInfo.Application.Features.Metadata.Commands.CreateMetadata;
+﻿namespace MYInfo.Application.Features.Metadata.Commands.CreateMetadata;
 
 
-public record CreateMetadaDataDtoSocialLinks(Uri Url, string Icon, string Title);
-public record CreateMetadaDataDto(string Description, IReadOnlyCollection<string> Emails, IReadOnlyCollection<string> PhoneNumbers, IReadOnlyCollection<CreateMetadaDataDtoSocialLinks> SocialLinks);
+public record CreateMetadataDataDtoSocialLinks(Uri Url, string Icon, string Title);
+public record CreateMetadataDataDto(string Description, IReadOnlyCollection<string> Emails, IReadOnlyCollection<string> PhoneNumbers, IReadOnlyCollection<CreateMetadataDataDtoSocialLinks> SocialLinks);
 public record CreateMetadataCommandResult(Guid Id);
-public record CreateMetadataCommand(CreateMetadaDataDto Dto) : ICommand<CreateMetadataCommandResult>;
-
-
+public record CreateMetadataCommand(CreateMetadataDataDto Dto) : ICommand<CreateMetadataCommandResult>;
 public class CreateMetadataCommandValidator : AbstractValidator<CreateMetadataCommand>
 {
     public CreateMetadataCommandValidator()

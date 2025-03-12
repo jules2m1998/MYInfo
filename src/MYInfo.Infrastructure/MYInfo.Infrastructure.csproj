@@ -11,6 +11,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EFCore.BulkExtensions" />
     <PackageReference Include="EFCore.NamingConventions" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />

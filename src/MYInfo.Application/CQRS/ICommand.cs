@@ -1,7 +1,4 @@
-﻿using ErrorOr;
-using MediatR;
-
-namespace MYInfo.Application.CQRS;
+﻿namespace MYInfo.Application.CQRS;
 
 #pragma warning disable CA1040 // Éviter les interfaces vides
 public interface ICommand : IRequest<ErrorOr<Unit>>;

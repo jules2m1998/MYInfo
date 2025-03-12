@@ -1,15 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using MYInfo.Domain.Repositories;
-using MYInfo.Infrastructure.Persistence;
-using MYInfo.Infrastructure.Persistence.Data;
-using MYInfo.Infrastructure.Persistence.Data.Interceptors;
-using MYInfo.Infrastructure.Persistence.Data.Repositories;
-
-namespace MYInfo.Infrastructure;
+﻿namespace MYInfo.Infrastructure;
 
 public static class InfrastructureDependencyInjection
 {

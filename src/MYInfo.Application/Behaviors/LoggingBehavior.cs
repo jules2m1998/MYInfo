@@ -1,9 +1,4 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
-using MYInfo.Application.CQRS;
-using System.Diagnostics;
-
-namespace MYInfo.Application.Behaviors;
+﻿namespace MYInfo.Application.Behaviors;
 
 
 public class LoggingBehavior<TRequest, TResponse>(
