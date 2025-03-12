@@ -1,0 +1,14 @@
+﻿global using ErrorOr;
+global using FluentValidation;
+global using Mapster;
+global using MediatR;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Logging;
+global using MYInfo.Application.Behaviors;
+global using MYInfo.Application.CQRS;
+global using MYInfo.Domain.Models;
+global using MYInfo.Domain.Repositories;
+global using MYInfo.Domain.Services;
+global using MYInfo.Domain.ValueObjects;
+global using System.Diagnostics;
+global using System.Reflection;
