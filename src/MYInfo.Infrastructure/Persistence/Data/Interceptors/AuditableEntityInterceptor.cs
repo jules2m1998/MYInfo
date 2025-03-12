@@ -1,24 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using MYInfo.Domain.Abstractions;
-using MYInfo.Domain.Services;
-
-namespace MYInfo.Infrastructure.Persistence.Data.Interceptors;
+﻿namespace MYInfo.Infrastructure.Persistence.Data.Interceptors;
 
 
 public class AuditableEntityInterceptor(IUserContextService userContextService) : SaveChangesInterceptor
 {
     private string _userIdentifier => userContextService.GetUserIdentifier();
-
-    public override InterceptionResult<int> SavingChanges(
-        DbContextEventData eventData,
-        InterceptionResult<int> result
-        )
-    {
-        UpdateEntities(eventData.Context);
-        return base.SavingChanges(eventData, result);
-    }
 
     public override ValueTask<InterceptionResult<int>> SavingChangesAsync(
         DbContextEventData eventData,

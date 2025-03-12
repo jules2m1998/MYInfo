@@ -1,10 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MYInfo.Domain.Models;
-using MYInfo.Domain.ValueObjects;
-using System.Text.Json;
-
-namespace MYInfo.Infrastructure.Persistence.Data.Configurations;
+﻿namespace MYInfo.Infrastructure.Persistence.Data.Configurations;
 
 public class UserMetaDataConfiguration : IEntityTypeConfiguration<UserMetaData>
 {

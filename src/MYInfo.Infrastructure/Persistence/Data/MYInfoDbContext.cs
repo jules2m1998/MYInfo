@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MYInfo.Domain.Models;
-using System.Reflection;
-
-namespace MYInfo.Infrastructure.Persistence.Data;
+﻿namespace MYInfo.Infrastructure.Persistence.Data;
 
 public class MYInfoDbContext(DbContextOptions<MYInfoDbContext> options)
     : DbContext(options), IDbContext

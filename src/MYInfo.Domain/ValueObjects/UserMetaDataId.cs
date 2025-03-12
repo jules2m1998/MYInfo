@@ -1,6 +1,4 @@
-﻿using MYInfo.Domain.Exceptions;
-
-namespace MYInfo.Domain.ValueObjects;
+﻿namespace MYInfo.Domain.ValueObjects;
 
 public class UserMetaDataId
 {

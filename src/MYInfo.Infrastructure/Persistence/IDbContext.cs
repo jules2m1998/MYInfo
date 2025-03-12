@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace MYInfo.Infrastructure.Persistence;
+﻿namespace MYInfo.Infrastructure.Persistence;
 
 public interface IDbContext
 {
