@@ -1,9 +1,4 @@
-﻿using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
-using MYInfo.Application.Behaviors;
-using System.Reflection;
-
-namespace MYInfo.Application;
+﻿namespace MYInfo.Application;
 
 public static class InfrastructureDependencyInjection
 {
@@ -17,6 +12,8 @@ public static class InfrastructureDependencyInjection
             cfg.AddOpenBehavior(typeof(LoggingBehavior<,>));
         });
         @this.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        @this.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+        @this.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
         return @this;
     }
 }
