@@ -20,7 +20,7 @@ public class CreateMetadataCommandHandlerTest
     public async Task CreateMetadataCommandHandler_WithUnautheticatedUser_ReturnUnautorisedResult()
     {
         // Arrange
-        var dto = fixture.Create<CreateMetadaDataDto>();
+        var dto = fixture.Create<CreateMetadataDataDto>();
         mockUserContext.Setup(x => x.GetUserIdentifier()).Returns("");
         var handler = new CreateMetadataHandler(mockRepository.Object, mockUserContext.Object);
 
@@ -36,7 +36,7 @@ public class CreateMetadataCommandHandlerTest
     public async Task CreateMetadataCommandHandler_WithAuthenticatedUserAndNonExistingMeta_CreateMetadataAndReturnId()
     {
         // Arrange
-        var dto = fixture.Create<CreateMetadaDataDto>();
+        var dto = fixture.Create<CreateMetadataDataDto>();
         var existing = new UserMetaData()
         {
             CreatedBy = "test",
@@ -68,7 +68,7 @@ public class CreateMetadataCommandHandlerTest
     public async Task CreateMetadataCommandHandler_WithAuthenticatedUserAndExistingMeta_UpdateMetadataAndReturnId()
     {
         // Arrange
-        var dto = fixture.Create<CreateMetadaDataDto>();
+        var dto = fixture.Create<CreateMetadataDataDto>();
         mockUserContext
             .Setup(x => x.GetUserIdentifier())
             .Returns("test");

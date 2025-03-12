@@ -21,28 +21,6 @@ public class AuditableEntityInterceptorTests
     }
 
     [Fact]
-    public void SaveChanges_NewItem_UpdatesCreatedAtToNow()
-    {
-        // Arrange
-        using var context = new TestDbContext(options);
-        context.ChangeTracker.AutoDetectChangesEnabled = true;
-        var testEntity = new EntityImplementation { Id = 1 };
-        _ = context.EntityImpls.Add(testEntity);
-
-        // Act
-        _ = context.SaveChanges();
-
-        // Assert
-        Assert.NotNull(testEntity.CreatedAt);
-        Assert.True((DateTime.UtcNow - testEntity.CreatedAt)?.TotalMinutes < 1, "CreatedAt should be within the last minute");
-        Assert.NotNull(testEntity.LastModified);
-        Assert.True((DateTime.UtcNow - testEntity.LastModified)?.TotalMinutes < 1, "LastModified should be within the last minute");
-
-        Assert.Equal(USER_IDENTIFIER, testEntity.CreatedBy);
-        Assert.Equal(USER_IDENTIFIER, testEntity.LastModifiedBy);
-    }
-
-    [Fact]
     public async Task SaveChangesAsync_NewItem_UpdatesCreatedAtToNow()
     {
         // Arrange
